@@ -1,103 +1,133 @@
-import Image from "next/image";
+import Item from "./_components/Items";
+import app from "@/firebase/credit";
+import { getAuth, sendEmailVerification } from "firebase/auth";
+import SignOutButton from "./_components/SignoutButton";
+
+const auth = getAuth(app);
+const user = auth.currentUser;
+
+const products = [
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$35",
+    color: "Black",
+  },
+  {
+    id: 2,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageAlt: "Front of men's Basic Tee in white.",
+    price: "$35",
+    color: "Aspen White",
+  },
+  {
+    id: 3,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageAlt: "Front of men's Basic Tee in dark gray.",
+    price: "$35",
+    color: "Charcoal",
+  },
+  {
+    id: 4,
+    name: "Artwork Tee",
+    href: "#",
+    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageAlt:
+      "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
+    price: "$35",
+    color: "Iso Dots",
+  },
+  {
+    id: 5,
+    name: "hanna artwork Tee",
+    href: "/hanna",
+    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageAlt:
+      "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
+    price: "$45",
+    color: "Iso Dots",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="h-auto flex flex-col justify-items-end  p-0 m-0 bg-neutral-800 text-white">
+        <div className="min-h-lvh xl:max-w-9/12 max-w-full  m-auto bg-neutral-900">
+          <header style={{ padding: "1rem ", borderBottom: "1px solid #eee" }}>
+            <h1>Sticker Johns</h1>
+            <h2>Welcome!</h2>
+            <p>This is a basic Next.js website layout.</p>
+          </header>
+          <main className="flex flex-col m-0 p-0 justify-center">
+            <div>
+              <h2 className="text-4xl font-medium pt-10 px-4 sm:px-6 lg:px-8 @4xl:text-5xl">
+                Featured Collection
+              </h2>
+              <div
+                // className="flex m-0 p-0 flex-wrap w-auto justify-center"
+                className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 m-0 p-4 sm:p-6 lg:p-8 justify-center"
+              >
+                {products.map((product) => (
+                  <Item
+                    key={product.id}
+                    name={product.name}
+                    price={product.price}
+                    image={product.imageSrc}
+                    href={product.href}
+                    imageAlt={product.imageAlt}
+                  ></Item>
+                ))}
+                <SignOutButton></SignOutButton>
+              </div>
+            </div>
+          </main>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
+  // } else {
+  // return <SignIn></SignIn>;
+  // }
 }
+
+// export default function Example() {
+//   return (
+//     <div className="bg-white">
+//       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+//         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+
+//         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+// {products.map((product) => (
+//   <div key={product.id} className="group relative">
+//     <img
+//       alt={product.imageAlt}
+//       src={product.imageSrc}
+//       className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+//     />
+//     <div className="mt-4 flex justify-between">
+//       <div>
+//         <h3 className="text-sm text-gray-700">
+//           <a href={product.href}>
+//             <span aria-hidden="true" className="absolute inset-0" />
+//             {product.name}
+//           </a>
+//         </h3>
+//         <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+//       </div>
+//       <p className="text-sm font-medium text-gray-900">{product.price}</p>
+//     </div>
+//   </div>
+// ))}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
