@@ -4,6 +4,7 @@ import { useState } from "react";
 import app from "../../firebase/credit";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const auth = getAuth(app);
 
@@ -118,12 +119,12 @@ export default function SignIn() {
 
           <p className="mt-10 text-center text-sm/6 text-gray-400">
             Already have an account?{" "}
-            <a
+            <Link
               href="/"
               className="font-semibold text-bg-emerald-400 hover:text-bg-emerald-300"
             >
               LogIn
-            </a>
+            </Link>
           </p>
         </div>
       </div>

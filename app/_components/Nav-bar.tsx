@@ -9,12 +9,15 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Image from "next/image";
+import type { User } from "firebase/auth";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import ImageLogo from "./Images";
 import app from "../../firebase/credit";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import SignOutButton from "./SignoutButton";
+// import SignOutButton from "./SignoutButton";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 
@@ -36,13 +39,13 @@ const userNavigation = [
   { name: "Settings", href: "/settings" },
 ];
 
-function classNames(...classes: any[]) {
+function classNames(...classes: (string | undefined | null | boolean)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const handleSignOut = async () => {
     try {
@@ -90,7 +93,7 @@ export default function Navbar() {
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         aria-current={item.current ? "page" : undefined}
@@ -102,7 +105,7 @@ export default function Navbar() {
                         )}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -114,9 +117,11 @@ export default function Navbar() {
                     <MenuButton className="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      <Image
                         alt=""
                         src={photoURL ? photoURL : dUser.imageLogoUrl}
+                        width={500}
+                        height={500}
                         className="size-8 md:size-9 lg:size-10 2xl:size-11 @max-4xl:size-13 rounded-full outline -outline-offset-1 outline-white/10"
                       />
                     </MenuButton>
@@ -127,21 +132,21 @@ export default function Navbar() {
                     >
                       {userNavigation.map((item) => (
                         <MenuItem key={item.name}>
-                          <a
+                          <Link
                             href={item.href}
                             className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         </MenuItem>
                       ))}
                       <MenuItem key={"Sign Out"}>
-                        <a
+                        <button
                           onClick={handleSignOut}
                           className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
                         >
                           Sign Out
-                        </a>
+                        </button>
                       </MenuItem>
                     </MenuItems>
                   </Menu>
@@ -187,9 +192,11 @@ export default function Navbar() {
             <div className="border-t border-white/10 pt-4 pb-3">
               <div className="flex items-center px-5">
                 <div className="shrink-0">
-                  <img
+                  <Image
                     alt=""
                     src={photoURL ? photoURL : dUser.imageLogoUrl}
+                    width={500}
+                    height={500}
                     className="size-10 rounded-full outline -outline-offset-1 outline-white/10"
                   />
                 </div>
@@ -240,7 +247,7 @@ export default function Navbar() {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       aria-current={item.current ? "page" : undefined}
@@ -252,7 +259,7 @@ export default function Navbar() {
                       )}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

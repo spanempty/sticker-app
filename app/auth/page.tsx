@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import app from "@/firebase/credit";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"; // Adjust path as needed
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -58,9 +60,11 @@ export default function LoginPage() {
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
+          <Image
             alt="Your Company"
             src="/window.svg"
+            width={500}
+            height={500}
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
@@ -100,12 +104,12 @@ export default function LoginPage() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
+                  <Link
                     href="#"
                     className="font-semibold text-bg-emerald-400 hover:text-bg-emerald-300"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -142,12 +146,12 @@ export default function LoginPage() {
           </div>
           <p className="mt-10 text-center text-sm/6 text-gray-400">
             Already have an account?{" "}
-            <a
+            <Link
               href="/"
               className="font-semibold text-bg-emerald-400 hover:text-bg-emerald-300"
             >
               LogIn
-            </a>
+            </Link>
           </p>
         </div>
       </div>

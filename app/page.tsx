@@ -1,6 +1,6 @@
 import Item from "./_components/Items";
 import app from "@/firebase/credit";
-import { getAuth, sendEmailVerification } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import SignOutButton from "./_components/SignoutButton";
 
 const auth = getAuth(app);
@@ -11,7 +11,7 @@ const products = [
     id: 1,
     name: "Basic Tee",
     href: "#",
-    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt: "Front of men's Basic Tee in black.",
     price: "$35",
     color: "Black",
@@ -20,7 +20,7 @@ const products = [
     id: 2,
     name: "Basic Tee",
     href: "#",
-    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt: "Front of men's Basic Tee in white.",
     price: "$35",
     color: "Aspen White",
@@ -29,7 +29,7 @@ const products = [
     id: 3,
     name: "Basic Tee",
     href: "#",
-    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt: "Front of men's Basic Tee in dark gray.",
     price: "$35",
     color: "Charcoal",
@@ -38,7 +38,7 @@ const products = [
     id: 4,
     name: "Artwork Tee",
     href: "#",
-    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$35",
@@ -48,7 +48,7 @@ const products = [
     id: 5,
     name: "hanna artwork Tee",
     href: "/hanna",
-    imageSrc: "mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$45",
