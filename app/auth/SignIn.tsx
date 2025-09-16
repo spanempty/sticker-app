@@ -5,6 +5,7 @@ import app from "../../firebase/credit";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const auth = getAuth(app);
 
@@ -26,6 +27,7 @@ export default function SignIn() {
           // Signed in
           const user = userCredential.user;
           router.push("/");
+          return user;
           // ...
         })
         .catch((error) => {
@@ -47,10 +49,12 @@ export default function SignIn() {
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
+          <Image
             alt="Your Company"
             src="/window.svg"
             className="mx-auto h-10 w-auto"
+            width={500}
+            height={500}
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
             Sign in to your account
