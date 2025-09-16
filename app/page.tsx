@@ -1,10 +1,10 @@
 import Item from "./_components/Items";
-import app from "@/firebase/credit";
-import { getAuth } from "firebase/auth";
-import SignOutButton from "./_components/SignoutButton";
+// import app from "@/firebase/credit";
+// import { getAuth } from "firebase/auth";
+// import SignOutButton from "./_components/SignoutButton";
 
-const auth = getAuth(app);
-const user = auth.currentUser;
+// const auth = getAuth(app);
+// const user = auth.currentUser;
 
 const products = [
   {
@@ -13,45 +13,45 @@ const products = [
     href: "#",
     imageSrc: "/mockup-b97fe7ce-Artguru.png",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "50",
     color: "Black",
   },
   {
     id: 2,
     name: "Basic Tee",
     href: "#",
-    imageSrc: "/mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/Stickers-01.webp",
     imageAlt: "Front of men's Basic Tee in white.",
-    price: "$35",
+    price: "65",
     color: "Aspen White",
   },
   {
     id: 3,
     name: "Basic Tee",
     href: "#",
-    imageSrc: "/mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/Sticker-02.jpg",
     imageAlt: "Front of men's Basic Tee in dark gray.",
-    price: "$35",
+    price: "55",
     color: "Charcoal",
   },
   {
     id: 4,
     name: "Artwork Tee",
     href: "#",
-    imageSrc: "/mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/Sticker-03.jpg",
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
-    price: "$35",
+    price: "50",
     color: "Iso Dots",
   },
   {
     id: 5,
     name: "hanna artwork Tee",
     href: "/hanna",
-    imageSrc: "/mockup-b97fe7ce-Artguru.png",
+    imageSrc: "/Sticker-04.jpg",
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
-    price: "$45",
+    price: "70",
     color: "Iso Dots",
   },
 ];
@@ -85,7 +85,7 @@ export default function Home() {
                     imageAlt={product.imageAlt}
                   ></Item>
                 ))}
-                <SignOutButton></SignOutButton>
+                {/* <SignOutButton></SignOutButton> */}
               </div>
             </div>
           </main>
